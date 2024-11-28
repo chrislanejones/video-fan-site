@@ -18,8 +18,9 @@ export function VideoThumbnail({
         <Image
           src={thumbnailSrc}
           alt={title}
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: "cover" }}
           className="transition-transform group-hover:scale-105"
         />
       </div>
