@@ -11,7 +11,7 @@ export function SearchBar() {
         placeholder="Search videos..."
         className="w-full max-w-xs bg-secondary text-secondary-foreground"
       />
-      <Button type="submit" size="icon" variant="secondary">
+      <Button type="submit" size="sm" variant="secondary">
         <Search className="h-4 w-4" />
         <span className="sr-only">Search</span>
       </Button>

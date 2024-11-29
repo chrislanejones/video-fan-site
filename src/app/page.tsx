@@ -17,7 +17,7 @@ const featuredVideo = {
 const otherVideos = Array.from({ length: 8 }, (_, i) => ({
   id: `video-${i + 1}`,
   title: `Awesome Video ${i + 1}`,
-  thumbnailSrc: `/placeholder.svg?height=180&width=320`,
+  thumbnailSrc: `/photos/placeholder.svg`,
 }));
 
 export default function Home() {

@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,7 +17,20 @@ const filterOptions = [
   { label: "This Year", value: "year" },
 ];
 
-export function FilterDropdown() {
+export function FilterDropdown({
+  onFilterChange,
+}: {
+  onFilterChange?: (value: string) => void;
+}) {
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+
+  const handleFilterSelect = (filterValue: string) => {
+    setSelectedFilter(filterValue);
+    if (onFilterChange) {
+      onFilterChange(filterValue);
+    }
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,7 +41,13 @@ export function FilterDropdown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {filterOptions.map((option) => (
-          <DropdownMenuItem key={option.value}>{option.label}</DropdownMenuItem>
+          <DropdownMenuItem
+            key={option.value}
+            onClick={() => handleFilterSelect(option.value)}
+            className={selectedFilter === option.value ? "bg-gray-100" : ""}
+          >
+            {option.label}
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
