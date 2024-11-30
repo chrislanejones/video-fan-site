@@ -16,18 +16,18 @@ const categories = [
 ];
 
 const brightColors = {
-  red: "#FF5252",
-  blue: "#448AFF",
-  green: "#69F0AE",
-  yellow: "#FFD740",
-  purple: "#E040FB",
-  orange: "#FFAB40",
-  pink: "#FF4081",
-  teal: "#64FFDA",
-  indigo: "#536DFE",
-  lime: "#EEFF41",
-  cyan: "#18FFFF",
-  amber: "#FFD740",
+  red: "oklch(50 50 0)",
+  blue: "oklch(50 50 240)",
+  green: "oklch(50 50 120)",
+  yellow: "oklch(50 50 60)",
+  purple: "oklch(50 50 270)",
+  orange: "oklch(50 50 30)",
+  pink: "oklch(50 50 330)",
+  teal: "oklch(80 80 170)",
+  indigo: "oklch(50 50 250)",
+  lime: "oklch(80 80 80)",
+  cyan: "oklch(80 80 180)",
+  amber: "oklch(80 80 45)",
 };
 
 export function Sidebar() {
