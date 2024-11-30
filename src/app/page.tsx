@@ -17,13 +17,13 @@ const featuredVideo = {
 const otherVideos = Array.from({ length: 8 }, (_, i) => ({
   id: `video-${i + 1}`,
   title: `Awesome Video ${i + 1}`,
-  thumbnailSrc: `/photos/placeholder.svg`,
+  thumbnailSrc: `/photos/placeholder.webp?height=180&width=320`,
 }));
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background dark">
-      <header className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+      <header className="sticky px-2 top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
         <div className="container mx-auto py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -39,7 +39,7 @@ export default function Home() {
           <div className="md:w-56 flex-shrink-0">
             <Sidebar />
           </div>
-          <div className="flex-grow space-y-8">
+          <div className="flex-grow space-y-8 ">
             <Video src={awesomeVideo} />;
             <section>
               <h2 className="text-2xl font-bold mb-4 text-primary">
