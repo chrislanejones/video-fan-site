@@ -2,7 +2,6 @@ import { SearchBar } from "@/components/search-bar";
 import { VideoPlayer } from "@/components/video-player";
 import { VideoThumbnail } from "@/components/video-thumbnail";
 import { Sidebar } from "@/components/sidebar";
-import { Clapperboard } from "lucide-react";
 
 import Video from "next-video";
 import awesomeVideo from "/videos/get-started.mp4.json";
@@ -24,15 +23,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background dark">
       <header className="sticky px-2 top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-        <div className="container mx-auto py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Clapperboard className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-primary">VideoApp</span>
-            </div>
-            <SearchBar />
-          </div>
-        </div>
+        <SearchBar />
       </header>
       <main className="container mx-auto py-6">
         <div className="flex flex-col md:flex-row gap-6">
