@@ -8,12 +8,20 @@ import path from "path";
 import Video from "next-video";
 import awesomeVideo from "/videos/get-started.mp4.json";
 
+// Define the type for a video object
+interface Video {
+  id: string;
+  title: string;
+  thumbnailSrc: string;
+  videoSrc: string;
+}
+
 // Function to get videos from the public folder
 export async function getStaticProps() {
   const videosDirectory = path.join(process.cwd(), "public/videos");
 
   try {
-    const videoFiles = fs
+    const videoFiles: Video[] = fs
       .readdirSync(videosDirectory)
       .filter(
         (file) =>
@@ -43,7 +51,12 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ videos }) {
+// Define the props type for the Home component
+interface HomeProps {
+  videos: Video[];
+}
+
+export default function Home({ videos }: HomeProps) {
   return (
     <div className="min-h-screen bg-background dark">
       <header className="sticky px-2 top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
