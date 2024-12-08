@@ -1,12 +1,10 @@
 import { SearchBar } from "@/components/search-bar";
-import { VideoPlayer } from "@/components/video-player";
 import { VideoThumbnail } from "@/components/video-thumbnail";
 import { Sidebar } from "@/components/sidebar";
-
-import fs from "fs";
-import path from "path";
 import Video from "next-video";
 import awesomeVideo from "/videos/get-started.mp4.json";
+import fs from "fs";
+import path from "path";
 
 // Define the type for a video object
 interface Video {
@@ -16,8 +14,8 @@ interface Video {
   videoSrc: string;
 }
 
-// Function to get videos from the public folder
-export async function getStaticProps() {
+// Server-side function to fetch videos
+async function getVideos(): Promise<Video[]> {
   const videosDirectory = path.join(process.cwd(), "public/videos");
 
   try {
@@ -36,27 +34,17 @@ export async function getStaticProps() {
         videoSrc: `/videos/${file}`,
       }));
 
-    return {
-      props: {
-        videos: videoFiles,
-      },
-    };
+    return videoFiles;
   } catch (error) {
     console.error("Error reading videos directory:", error);
-    return {
-      props: {
-        videos: [],
-      },
-    };
+    return [];
   }
 }
 
-// Define the props type for the Home component
-interface HomeProps {
-  videos: Video[];
-}
+// This is now a Server Component
+export default async function Home() {
+  const videos = await getVideos();
 
-export default function Home({ videos }: HomeProps) {
   return (
     <div className="min-h-screen bg-background dark">
       <header className="sticky px-2 top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
