@@ -5,6 +5,8 @@ import Video from "next-video";
 import awesomeVideo from "/videos/get-started.mp4.json";
 import fs from "fs";
 import path from "path";
+import Link from "next/link";
+
 
 // Define the type for a video object
 interface Video {
@@ -75,6 +77,19 @@ export default async function Home() {
                   ))}
                 </div>
               </section>
+
+
+
+
+    <Link 
+      href="/contact" 
+      className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+    >
+      Contact Us
+    </Link>
+  );
+
+
             )}
           </div>
         </div>
