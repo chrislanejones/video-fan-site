@@ -7,7 +7,6 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 
-
 // Define the type for a video object
 interface Video {
   id: string;
@@ -77,20 +76,26 @@ export default async function Home() {
                   ))}
                 </div>
               </section>
-
-
-
-
-    <Link 
-      href="/contact" 
-      className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-    >
-      Contact Us
-    </Link>
-  );
-
-
             )}
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              Contact Us
+            </Link>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              More Info
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              Add Your Video
+            </Link>
           </div>
         </div>
       </main>
