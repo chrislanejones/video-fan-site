@@ -59,6 +59,26 @@ export default async function Home() {
           <div className="flex-grow space-y-8">
             <Video src={awesomeVideo} />
             <section>
+              <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors"
+                >
+                  Contact Us
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors"
+                >
+                  More Info
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors"
+                >
+                  Add Your Video
+                </Link>
+              </div>
               <h2 className="text-2xl font-bold mb-4 text-primary">
                 Other Videos
               </h2>
@@ -77,25 +97,6 @@ export default async function Home() {
                 </div>
               </section>
             )}
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              Contact Us
-            </Link>
-
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              More Info
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              Add Your Video
-            </Link>
           </div>
         </div>
       </main>
