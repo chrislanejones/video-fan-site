@@ -6,6 +6,7 @@ import { FilterDropdown } from "./filter-dropdown";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Clapperboard } from "lucide-react";
+import UploadButton from "./upload-button";
 
 export function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,6 +41,7 @@ export function SearchBar() {
             </Button>
           </form>
           <FilterDropdown />
+          <UploadButton />
         </div>
       </div>
     </div>

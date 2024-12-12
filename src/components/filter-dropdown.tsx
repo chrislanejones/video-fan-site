@@ -34,7 +34,7 @@ export function FilterDropdown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="icon" className="h-8 w-8" variant="secondary">
+        <Button size="sm" variant="secondary">
           <Filter className="h-4 w-4" />
           <span className="sr-only">Filter videos</span>
         </Button>
