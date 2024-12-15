@@ -6,6 +6,9 @@ import awesomeVideo from "/videos/get-started.mp4.json";
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
+import UploadModal from "@/components/upload-modal";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 // Define the type for a video object
 interface Video {
@@ -45,6 +48,7 @@ async function getVideos(): Promise<Video[]> {
 // This is now a Server Component
 export default async function Home() {
   const videos = await getVideos();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background dark">
@@ -72,12 +76,13 @@ export default async function Home() {
                 >
                   More Info
                 </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 transition-colors"
-                >
-                  Add Your Video
-                </Link>
+                <Button onClick={() => setIsModalOpen(true)}>
+                  Upload Video
+                </Button>
+                <UploadModal
+                  isOpen={isModalOpen}
+                  onClose={() => setIsModalOpen(false)}
+                />
               </div>
               <h2 className="text-2xl font-bold mb-4 text-primary">
                 Other Videos

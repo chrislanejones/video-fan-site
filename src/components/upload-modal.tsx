@@ -4,11 +4,11 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import DragDropArea from "./DragDropArea";
+} from "../components/ui/dialog";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
+import DragDropArea from "../components/drag-and-drop";
 import { uploadVideo } from "../lib/uploadVideo";
 
 interface UploadModalProps {
