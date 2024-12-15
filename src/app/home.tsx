@@ -26,7 +26,7 @@ export default function Home({ videos }: HomeProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background dark">
+    <div className="min-h-screen">
       <header className="sticky px-2 top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
         <SearchBar />
       </header>

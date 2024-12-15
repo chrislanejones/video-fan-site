@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Clapperboard } from "lucide-react";
 import { UploadVideoButton } from "./upload-button";
+import { ModeToggle } from "./mode-toggle";
 
 export function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,14 +34,15 @@ export function SearchBar() {
               type="text"
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search..."
-              className="w-full max-w-xs bg-secondary text-secondary-foreground"
+              className="w-full max-w-xs bg-secondary text-secondary-foreground h-8"
             />
             <Button type="submit" size="sm" variant="secondary">
-              <Search className="h-4 w-4" />
+              <Search />
               <span className="sr-only">Search</span>
             </Button>
           </form>
           <FilterDropdown />
+          <ModeToggle />
           <UploadVideoButton />
         </div>
       </div>

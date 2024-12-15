@@ -60,7 +60,7 @@ export function UploadVideoButton() {
         ) : (
           <Upload size={16} />
         )}
-        {uploading ? "Uploading..." : "Upload"}
+        {uploading ? "Uploading..." : ""}
       </Button>
     </>
   );
