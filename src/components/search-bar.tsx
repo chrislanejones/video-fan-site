@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Clapperboard } from "lucide-react";
 import { UploadVideoButton } from "./upload-button";
 import { ModeToggle } from "./mode-toggle";
+import UploadModal from "./upload-modal";
 
 export function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,6 +45,10 @@ export function SearchBar() {
           <FilterDropdown />
           <ModeToggle />
           <UploadVideoButton />
+          <UploadModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
         </div>
       </div>
     </div>
