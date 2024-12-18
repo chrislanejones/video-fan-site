@@ -1,17 +1,16 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, Upload, Clapperboard } from "lucide-react"; // Added Upload icon import
 import { FilterDropdown } from "./filter-dropdown";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Clapperboard } from "lucide-react";
-import { UploadVideoButton } from "./upload-button";
 import { ModeToggle } from "./mode-toggle";
 import UploadModal from "./upload-modal";
 
 export function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -44,7 +43,14 @@ export function SearchBar() {
           </form>
           <FilterDropdown />
           <ModeToggle />
-          <UploadVideoButton />
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            size="sm"
+            variant="secondary"
+          >
+            <Upload className="h-4 w-4" />
+            <span className="sr-only">Upload Video</span>
+          </Button>
           <UploadModal
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
