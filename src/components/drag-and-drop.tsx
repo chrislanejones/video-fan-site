@@ -59,11 +59,7 @@ export default function DragDropArea({ onFileDrop }: DragDropAreaProps) {
       />
       <label htmlFor="fileInput">
         <div className="cursor-pointer">
-          <p className="mb-2">Drag & Drop your video here</p>
-          <p className="text-sm text-gray-500">or</p>
-          <Button type="button" variant="outline" className="mt-2">
-            Select Video
-          </Button>
+          <p className="mx-4">Drag & Drop your video here</p>
         </div>
       </label>
     </div>
