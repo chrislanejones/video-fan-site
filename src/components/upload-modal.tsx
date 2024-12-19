@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,6 +10,7 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import DragDropArea from "../components/drag-and-drop";
 import { uploadVideo } from "../lib/uploadVideo";
+import { Upload, Loader2 } from "lucide-react";
 
 interface UploadModalProps {
   isOpen: boolean;
@@ -20,6 +21,8 @@ export default function UploadModal({ isOpen, onClose }: UploadModalProps) {
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +30,38 @@ export default function UploadModal({ isOpen, onClose }: UploadModalProps) {
       await uploadVideo(file, name, artist);
       onClose();
     }
+  };
+
+  const handleDirectUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (!selectedFile) return;
+
+    setUploading(true);
+    setFile(selectedFile);
+
+    const formData = new FormData();
+    formData.append("video", selectedFile);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      if (!response.ok) throw new Error("Upload failed");
+    } catch (error) {
+      console.error("Upload error:", error);
+      alert("Video upload failed. Please try again.");
+      setFile(null);
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -54,11 +89,37 @@ export default function UploadModal({ isOpen, onClose }: UploadModalProps) {
               required
             />
           </div>
-          <DragDropArea onFileDrop={setFile} />
+          <div className="flex flex-col gap-4">
+            <DragDropArea onFileDrop={setFile} />
+            <div className="flex items-center justify-center">
+              <span className="text-sm text-gray-500 mx-2">or</span>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleDirectUpload}
+                accept="video/*"
+                className="hidden"
+              />
+              <Button
+                type="button"
+                size="sm"
+                variant="secondary"
+                onClick={triggerFileInput}
+                disabled={uploading}
+              >
+                {uploading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <Upload className="mr-2 h-4 w-4" />
+                )}
+                {uploading ? "Uploading..." : "Choose File"}
+              </Button>
+            </div>
+          </div>
           {file && (
             <p className="text-sm text-green-600">File selected: {file.name}</p>
           )}
-          <Button type="submit" disabled={!file}>
+          <Button type="submit" disabled={!file || uploading}>
             Upload
           </Button>
         </form>
