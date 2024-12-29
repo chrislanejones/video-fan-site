@@ -1,4 +1,4 @@
-("use client");
+"use client";
 
 import { SearchBar } from "@/components/search-bar";
 import { VideoThumbnail } from "@/components/video-thumbnail";

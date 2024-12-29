@@ -1,9 +1,8 @@
-// components/custom-video.tsx
-import Video from "next-video";
-import type { VideoProps } from "next-video";
-import { Asset } from "next-video";
+import Video, { VideoProps } from "next-video";
+import Image from "next/image";
 
-interface CustomVideoProps extends VideoProps {
+interface CustomVideoProps {
+  src: any; // Using any for the video source type since we don't have access to the internal Asset type
   artistName: string;
   artistImageSrc: string;
   views: number;
@@ -20,10 +19,12 @@ export function CustomVideo({
     <div className="video-container">
       <Video src={src} {...props} />
       <div className="video-metadata mt-4 flex items-center gap-4">
-        <img
+        <Image
           src={artistImageSrc}
           alt={artistName}
-          className="w-10 h-10 rounded-full"
+          width={40}
+          height={40}
+          className="rounded-full object-cover"
         />
         <div>
           <div className="font-medium">{artistName}</div>
