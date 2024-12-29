@@ -4,13 +4,23 @@ interface VideoPlayerProps {
   videoSrc: string;
   thumbnailSrc: string;
   title: string;
+  artistName: string;
+  artistImageSrc: string;
+  views: number;
 }
 
 export function VideoPlayer({
   videoSrc,
   thumbnailSrc,
   title,
+  artistName,
+  artistImageSrc,
+  views,
 }: VideoPlayerProps) {
+  const formattedViews = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+  }).format(views);
+
   return (
     <div className="w-full">
       <div className="relative aspect-video">
@@ -37,6 +47,24 @@ export function VideoPlayer({
         </div>
       </div>
       <h2 className="mt-2 text-xl font-semibold text-primary">{title}</h2>
+      <div className="mt-2 flex items-center space-x-3">
+        <div className="relative w-10 h-10 rounded-full overflow-hidden">
+          <Image
+            src={artistImageSrc}
+            alt={artistName}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div>
+          <p className="text-sm font-medium text-primary-foreground">
+            {artistName}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {formattedViews} views
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

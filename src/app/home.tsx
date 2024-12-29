@@ -16,6 +16,9 @@ interface Video {
   title: string;
   thumbnailSrc: string;
   videoSrc: string;
+  artistName: "Default Artist";
+  artistImageSrc: "/placeholder.svg?height=100&width=100";
+  views: 5000;
 }
 
 interface HomeProps {
