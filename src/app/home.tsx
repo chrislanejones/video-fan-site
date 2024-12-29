@@ -1,32 +1,37 @@
-"use client";
+("use client");
 
 import { SearchBar } from "@/components/search-bar";
 import { VideoThumbnail } from "@/components/video-thumbnail";
 import { Sidebar } from "@/components/sidebar";
-import Video from "next-video";
 import awesomeVideo from "/videos/get-started.mp4.json";
 import Link from "next/link";
 import UploadModal from "@/components/upload-modal";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { CustomVideo } from "@/components/custom-video";
 
-// Define the type for a video object
-interface Video {
+interface VideoType {
   id: string;
   title: string;
   thumbnailSrc: string;
   videoSrc: string;
-  artistName: "Default Artist";
-  artistImageSrc: "/placeholder.svg?height=100&width=100";
-  views: 5000;
+  artistName: string;
+  artistImageSrc: string;
+  views: number;
 }
 
 interface HomeProps {
-  videos: Video[];
+  videos: VideoType[];
 }
 
 export default function Home({ videos }: HomeProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const videoMetadata = {
+    artistName: "Default Artist",
+    artistImageSrc: "/placeholder.svg?height=100&width=100",
+    views: 5000,
+  };
 
   return (
     <div className="min-h-screen">
@@ -39,7 +44,12 @@ export default function Home({ videos }: HomeProps) {
             <Sidebar />
           </div>
           <div className="flex-grow space-y-8">
-            <Video src={awesomeVideo} />
+            <CustomVideo
+              src={awesomeVideo}
+              artistName={videoMetadata.artistName}
+              artistImageSrc={videoMetadata.artistImageSrc}
+              views={videoMetadata.views}
+            />
             <section>
               <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
                 <Link
