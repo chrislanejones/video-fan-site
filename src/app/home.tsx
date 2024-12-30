@@ -34,7 +34,7 @@ export default function Home({ videos }: HomeProps) {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen emoji-background">
       <header className="sticky px-2 top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
         <SearchBar />
       </header>
